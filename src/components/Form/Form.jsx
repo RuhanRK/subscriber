@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import uuid from "uuid";
 
 import Button from "./../Button/Button";
+import { setSubscriber } from "./../../actions/actions";
 
 import "./Form.css";
 
-const Form = () => {
+const Form = props => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
 
@@ -23,9 +27,17 @@ const Form = () => {
 
         // validate phone number
         const phoneNumber = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
         if (!phone.match(phoneNumber)) {
             alert("Enter valid Number");
         } else {
+            // set input value into redux store
+            props.setSubscriber({
+                id: uuid(),
+                name,
+                phone
+            });
+
             // clear input text
             setName("");
             setPhone("");
@@ -81,4 +93,7 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default connect(
+    null,
+    { setSubscriber }
+)(Form);
