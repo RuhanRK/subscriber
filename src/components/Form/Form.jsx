@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Button from "./../Button/Button";
 
@@ -8,7 +9,9 @@ const Form = () => {
     return (
         <div className="form-container">
             <div className="btn-section">
-                <Button text="back" />
+                <Link to="/">
+                    <Button text="back" />
+                </Link>
             </div>
             <div className="form-section">
                 <form>

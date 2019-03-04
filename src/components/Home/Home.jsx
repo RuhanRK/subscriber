@@ -1,13 +1,18 @@
 import React from "react";
-import "./Home.css";
+import { Link } from "react-router-dom";
+
 import Button from "../Button/Button";
+
+import "./Home.css";
 
 const Home = () => {
     return (
         <div>
             <div className="container">
                 <div className="add-section">
-                    <Button text="add" />
+                    <Link to="/add">
+                        <Button text="add" />
+                    </Link>
                 </div>
                 <div className="table-section">
                     <table className="table">
