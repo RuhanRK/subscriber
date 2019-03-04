@@ -38,7 +38,7 @@ const Form = props => {
                 phone
             });
 
-            // clear input text
+            // clear input text after successfully submit
             setName("");
             setPhone("");
         }

@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Button from "../Button/Button";
 
 import "./Home.css";
 
-const Home = () => {
+const Home = ({ subscriber }) => {
     return (
         <div>
             <div className="container">
@@ -24,13 +25,15 @@ const Home = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Shilpa</td>
-                                <td>54548484</td>
-                                <td>
-                                    <Button text="delete" />
-                                </td>
-                            </tr>
+                            {subscriber.map(subs => (
+                                <tr key={subs.id}>
+                                    <td>{subs.name}</td>
+                                    <td>{subs.phone}</td>
+                                    <td>
+                                        <Button text="delete" />
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
@@ -38,4 +41,9 @@ const Home = () => {
         </div>
     );
 };
-export default Home;
+
+// get state value from redux store
+const mapStateToProps = state => ({
+    subscriber: state.subscriber
+});
+export default connect(mapStateToProps)(Home);
