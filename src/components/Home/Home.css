@@ -1,0 +1,29 @@
+.container {
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+.container .add-section {
+    margin-bottom: 0.5rem;
+}
+
+/* table design */
+table.table {
+    width: 100%;
+    text-transform: uppercase;
+    border-collapse: collapse;
+}
+
+table.table th {
+    text-align-last: left;
+    padding: 1.2rem 0;
+    padding-bottom: 0.5rem;
+    font-weight: 400;
+}
+table.table td {
+    padding: 1rem 0;
+}
+
+table.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

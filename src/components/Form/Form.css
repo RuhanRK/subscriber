@@ -1,0 +1,23 @@
+.form-container {
+    width: 100%;
+    padding: 1.5rem 1rem;
+}
+
+.btn-section {
+    margin: 1rem 0;
+}
+
+/* form design */
+.form-group {
+    margin: 1rem 0;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+.form-group input {
+    padding: 0.5rem;
+}
+
+.form-group h5 {
+    font-weight: 600;
+}
