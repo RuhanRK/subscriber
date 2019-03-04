@@ -1,0 +1,1 @@
+export const SET_SUBSCRIBER = "SET_SUBSCRIBER";
