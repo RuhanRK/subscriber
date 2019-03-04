@@ -15,3 +15,17 @@ export const deleteSubscriber = id => {
         payload: id
     };
 };
+
+export const selectSubscriber = id => {
+    return {
+        type: actionTypes.SELECT_SUBSCRIBER,
+        payload: id
+    };
+};
+
+export const updateSubscriber = value => {
+    return {
+        type: actionTypes.UPDATE_SUBSCRIBER,
+        payload: value
+    };
+};

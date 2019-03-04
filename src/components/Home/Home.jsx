@@ -40,6 +40,12 @@ const Home = ({ subscriber, deleteSubscriber }) => {
                                         >
                                             delete
                                         </button>
+
+                                        <Link to={`/update/${subs.id}`}>
+                                            <button className={`btn btn-edit`}>
+                                                edit
+                                            </button>
+                                        </Link>
                                     </td>
                                 </tr>
                             ))}
