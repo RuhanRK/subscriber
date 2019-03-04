@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import uuid from "uuid";
@@ -8,6 +8,7 @@ import Button from "./../Button/Button";
 import { setSubscriber } from "./../../actions/actions";
 
 import "./Form.css";
+import FormBox from "../FormBox/FormBox";
 
 const Form = props => {
     const [name, setName] = useState("");
@@ -41,6 +42,9 @@ const Form = props => {
             // clear input text after successfully submit
             setName("");
             setPhone("");
+
+            // push back to home page
+            props.history.push("/");
         }
     };
 
@@ -52,42 +56,13 @@ const Form = props => {
                 </Link>
             </div>
             <div className="form-section">
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Name:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="Your Name"
-                            onChange={handleChange}
-                            autoComplete="off"
-                            value={name}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="phone">Phone:</label>
-                        <input
-                            type="text"
-                            name="phone"
-                            id="phone"
-                            placeholder="Enter Phone Number"
-                            onChange={handleChange}
-                            value={phone}
-                            autoComplete="off"
-                            required
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <h5>Subscriber to Added: </h5>
-                        <p>Name: {name}</p>
-                        <p>Phone: {phone}</p>
-                    </div>
-
-                    <Button text="add" />
-                </form>
+                <FormBox
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    name={name}
+                    phone={phone}
+                    text={"add"}
+                />
             </div>
         </div>
     );
@@ -96,4 +71,4 @@ const Form = props => {
 export default connect(
     null,
     { setSubscriber }
-)(Form);
+)(withRouter(Form));

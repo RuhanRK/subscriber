@@ -1,10 +1,7 @@
 import * as actionTypes from "../actions/type";
 
 const initialState = {
-    subscriber: [
-        { id: 1, name: "test", phone: "0123456789" },
-        { id: 2, name: "test2", phone: "0123456459" }
-    ],
+    subscriber: [],
     selectedSubscriber: null
 };
 
@@ -24,8 +21,9 @@ const subscriberReducer = (state = initialState, action) => {
             };
         case actionTypes.SELECT_SUBSCRIBER:
             let foundSubscriber = [...state.subscriber];
+
             foundSubscriber = foundSubscriber.filter(
-                subs => subs.id == action.payload
+                subs => subs.id.toString() === action.payload
             );
             return {
                 ...state,

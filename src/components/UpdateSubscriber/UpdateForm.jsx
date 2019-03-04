@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import Button from "./../Button/Button";
 import { selectSubscriber, updateSubscriber } from "./../../actions/actions";
+import FormBox from "../FormBox/FormBox";
 
 class UpdateForm extends Component {
     state = {
@@ -54,7 +55,7 @@ class UpdateForm extends Component {
             alert("Enter valid Number");
         } else {
             const updatedSubscriberInput = {
-                id: Number(this.props.match.params.id),
+                id: this.props.match.params.id,
                 name: this.state.name,
                 phone: this.state.phone
             };
@@ -77,42 +78,13 @@ class UpdateForm extends Component {
                     </Link>
                 </div>
                 <div className="form-section">
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="name">Name:</label>
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Your Name"
-                                onChange={this.handleChange}
-                                autoComplete="off"
-                                value={name}
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone:</label>
-                            <input
-                                type="text"
-                                name="phone"
-                                id="phone"
-                                placeholder="Enter Phone Number"
-                                onChange={this.handleChange}
-                                value={phone}
-                                autoComplete="off"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <h5>Subscriber to Added: </h5>
-                            <p>Name: {name}</p>
-                            <p>Phone: {phone}</p>
-                        </div>
-
-                        <Button text="update" />
-                    </form>
+                    <FormBox
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
+                        name={name}
+                        phone={phone}
+                        text={"update"}
+                    />
                 </div>
             </div>
         );
