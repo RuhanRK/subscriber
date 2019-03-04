@@ -11,7 +11,13 @@ const subscriberReducer = (state = initialState, action) => {
                 ...state,
                 subscriber: [...state.subscriber, action.payload]
             };
-
+        case actionTypes.DELETE_SUBSCRIBER:
+            let subscriber = [...state.subscriber];
+            subscriber = subscriber.filter(subs => subs.id !== action.payload);
+            return {
+                ...state,
+                subscriber
+            };
         default:
             return state;
     }

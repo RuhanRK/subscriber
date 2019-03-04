@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Button from "../Button/Button";
+import { deleteSubscriber } from "../../actions/actions";
 
 import "./Home.css";
 
-const Home = ({ subscriber }) => {
+const Home = ({ subscriber, deleteSubscriber }) => {
+    const handleClick = id => {
+        deleteSubscriber(id);
+    };
     return (
         <div>
             <div className="container">
@@ -30,7 +34,12 @@ const Home = ({ subscriber }) => {
                                     <td>{subs.name}</td>
                                     <td>{subs.phone}</td>
                                     <td>
-                                        <Button text="delete" />
+                                        <button
+                                            onClick={() => handleClick(subs.id)}
+                                            className={`btn btn-delete`}
+                                        >
+                                            delete
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
@@ -46,4 +55,7 @@ const Home = ({ subscriber }) => {
 const mapStateToProps = state => ({
     subscriber: state.subscriber
 });
-export default connect(mapStateToProps)(Home);
+export default connect(
+    mapStateToProps,
+    { deleteSubscriber }
+)(Home);

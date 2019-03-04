@@ -7,3 +7,11 @@ export const setSubscriber = value => {
         payload: value
     };
 };
+
+// delete subscriber
+export const deleteSubscriber = id => {
+    return {
+        type: actionTypes.DELETE_SUBSCRIBER,
+        payload: id
+    };
+};
